@@ -85,6 +85,7 @@ $query = mysqli_query($conn, "SELECT * FROM transaksi ORDER BY id DESC");
             <td><?= $data['jumlah'] ?></td>
             <td>Rp <?= number_format($data['total'], 0, ',', '.') ?></td>
             <td>
+                <a href="edit.php?id=<?= $data['id'] ?>">Edit</a> |
                 <a href="hapus.php?id=<?= $data['id'] ?>"
                     onclick="return confirm('Yakin ingin menghapus data ini?')"
                     style="color:red; font-weight:bold;">
