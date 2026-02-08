@@ -4,9 +4,8 @@ $user = "root";
 $pass = "";
 $db   = "tukang_jahit";
 
-$conn = mysqli_connect($host, $user, $pass, $db);
+$koneksi = mysqli_connect($host, $user, $pass, $db);
 
-if (!$conn) {
-    die("Koneksi database gagal");
+if (!$koneksi) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
 }
-?>

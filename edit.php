@@ -1,11 +1,9 @@
 <?php
 include "koneksi.php";
 
-// Ambil id
-$id = $_GET['id'];
 
-// Ambil data lama
-$query = mysqli_query($conn, "SELECT * FROM transaksi WHERE id='$id'");
+$id = $_GET['id'];
+$query = mysqli_query($koneksi, "SELECT * FROM transaksi WHERE id='$id'");
 $data = mysqli_fetch_assoc($query);
 ?>
 

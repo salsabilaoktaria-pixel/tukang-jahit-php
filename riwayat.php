@@ -1,53 +1,52 @@
 <?php
-include "koneksi.php";
-
-// Ambil data transaksi
-$query = mysqli_query($conn, "SELECT * FROM transaksi ORDER BY id DESC");
+include 'koneksi.php';
+$data = mysqli_query($koneksi, "SELECT * FROM transaksi ORDER BY id DESC");
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Riwayat Transaksi Jahit</title>
+    <title>Riwayat Transaksi</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f7ff;
         }
         .container {
-            width: 90%;
+            width: 95%;
             margin: 40px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            color: #2c7be5;
         }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
             text-align: center;
         }
         th {
             background: #2c7be5;
             color: white;
         }
-        tr:nth-child(even) {
-            background: #f9f9f9;
+        tr:hover {
+            background: #f1f4ff;
         }
         a {
-            display: inline-block;
-            margin-bottom: 15px;
+            padding: 6px 12px;
+            background: #e63946;
+            color: white;
+            border-radius: 6px;
             text-decoration: none;
-            color: #2c7be5;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -56,8 +55,6 @@ $query = mysqli_query($conn, "SELECT * FROM transaksi ORDER BY id DESC");
 <div class="container">
     <h2>📋 Riwayat Transaksi Jahit</h2>
 
-    <a href="index.php">+ Tambah Transaksi</a>
-
     <table>
         <tr>
             <th>No</th>
@@ -65,38 +62,31 @@ $query = mysqli_query($conn, "SELECT * FROM transaksi ORDER BY id DESC");
             <th>Tanggal</th>
             <th>Nama</th>
             <th>Bahan</th>
-            <th>Harga / Meter</th>
-            <th>Meter</th>
-            <th>Total Bayar</th>
+            <th>Harga</th>
+            <th>Jumlah</th>
+            <th>Total</th>
             <th>Aksi</th>
         </tr>
 
-        <?php
-        $no = 1;
-        while ($data = mysqli_fetch_assoc($query)) {
-        ?>
+        <?php $no=1; while($d=mysqli_fetch_assoc($data)) { ?>
         <tr>
             <td><?= $no++ ?></td>
-            <td><?= $data['nota'] ?></td>
-            <td><?= $data['tanggal'] ?></td>
-            <td><?= $data['nama'] ?></td>
-            <td><?= ucfirst($data['bahan']) ?></td>
-            <td>Rp <?= number_format($data['harga_satuan'], 0, ',', '.') ?></td>
-            <td><?= $data['jumlah'] ?></td>
-            <td>Rp <?= number_format($data['total'], 0, ',', '.') ?></td>
+            <td><?= $d['nota'] ?></td>
+            <td><?= $d['tanggal'] ?></td>
+            <td><?= $d['nama'] ?></td>
+            <td><?= ucfirst($d['bahan']) ?></td>
+            <td>Rp <?= number_format($d['harga_satuan'],0,',','.') ?></td>
+            <td><?= $d['jumlah'] ?></td>
+            <td>Rp <?= number_format($d['total'],0,',','.') ?></td>
             <td>
-                <a href="edit.php?id=<?= $data['id'] ?>">Edit</a> |
-                <a href="hapus.php?id=<?= $data['id'] ?>"
-                    onclick="return confirm('Yakin ingin menghapus data ini?')"
-                    style="color:red; font-weight:bold;">
-                    Hapus
-                </a>
+                <a href="hapus.php?id=<?= $d['id'] ?>" onclick="return confirm('Hapus data ini?')">Hapus</a>
             </td>
-
         </tr>
         <?php } ?>
     </table>
-</div>
 
+    <a href="index.php">+ Kembali</a>
+
+</div>
 </body>
 </html>

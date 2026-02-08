@@ -6,11 +6,14 @@ Aplikasi sederhana untuk membantu tukang jahit menghitung biaya jahit dan menyim
 
 ## 📌 Fitur Aplikasi
 - Input data pelanggan
-- Pilih jenis bahan dan harga per meter
-- Hitung biaya jahit otomatis
-- Diskon berdasarkan total belanja
-- Simpan transaksi ke database MySQL
-- Riwayat data jahitan
+- Pilih jenis pakaian dan bahan
+- Input harga bahan per meter dan jumlah meter
+- Perhitungan biaya jahit otomatis
+- Diskon (%) sesuai input
+- Tampilkan struk / nota transaksi
+- Simpan data transaksi ke database MySQL
+- Lihat riwayat transaksi
+- Edit dan hapus data transaksi
 
 ---
 
@@ -25,19 +28,32 @@ Aplikasi sederhana untuk membantu tukang jahit menghitung biaya jahit dan menyim
 ---
 
 ## Struktur Folder
-index.php      → halaman input  
-proses.php     → proses hitung  
-koneksi.php    → koneksi database  
+- `index.php` → Form input transaksi
+- `proses.php` → Proses perhitungan & struk
+- `koneksi.php` → Koneksi database
+- `riwayat.php` → Riwayat transaksi
+- `edit.php` → Form edit transaksi
+- `update.php` → Proses update data
+- `hapus.php` → Hapus data transaksi
+
+---
 
 ## Cara Menjalankan
-1. Install XAMPP
-2. Aktifkan Apache & MySQL
-3. Letakkan folder di htdocs
-4. Buka http://localhost/tukang-jahit-php
+1. Install **XAMPP**
+2. Aktifkan **Apache** dan **MySQL**
+3. Buat database `tukang_jahit`
+4. Import tabel `transaksi`
+5. Letakkan folder proyek di `htdocs`
+6. Buka browser dan akses:  
+   `http://localhost/tukang-jahit-php`
+
+---
 
 ## Database
 Nama database: tukang_jahit  
 Nama tabel: transaksi
+
+---
 
 ## Dibuat Oleh
 Nama: Salsabila Oktaria
